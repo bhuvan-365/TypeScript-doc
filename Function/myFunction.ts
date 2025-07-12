@@ -46,5 +46,27 @@ function getValue(myVal:number){
 }
 // default output type is boolean
 
+const getHello = (s:string):string =>{
+    return""
+}
+
+const heros = ["thor","spiderman","bhuva","ironman"]
+
+heros.map ((hero):string => {
+return `Hero is ${hero}`
+
+})
+
+function consoleError(errmsg:string):void{
+    console.log(errmsg);
+
+
+}          
+function haldelError(errmsg:string):never {
+  throw new Error (errmsg)
+
+
+}    
+
 
 export { }

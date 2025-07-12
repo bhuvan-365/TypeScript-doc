@@ -43,3 +43,43 @@ getUpper("bhuvan")
 signUpUser("Bhuvan", "bhuvan@gmail.com", true)
 
 export { }
+
+
+
+
+
+
+function getValue(myVal:number){
+    
+    if(myVal >5){
+        return true
+    }
+    return "69 OK"
+}
+// default output type is boolean
+
+
+
+
+
+
+Type Aliases
+
+type User ={
+    name:string;
+    email:string;
+    isActive:boolean
+}
+
+
+
+function createUser(user:User): User{
+    return{name:"", email:"", isActive:true}
+
+}
+
+createUser({name:"", email:"", isActive:true})
+
+
+
+export{}
