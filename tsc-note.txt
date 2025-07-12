@@ -1,0 +1,45 @@
+TypeScript :
+
+Type
+number,string,boolean,null,undefine,void,object,array,tuples,....other
+
+
+Situations:
+
+syntax:
+let variableName:type = value
+
+
+
+function in TypeScript:
+
+
+function addTwo(num: number) {
+    return num + 2;
+
+}
+
+function getUpper(val: string) {
+    return val.toUpperCase()
+
+}
+
+function signUpUser(name: string, email: string, ispaid: boolean) {
+    const upperName = name.toUpperCase()
+    const isEmailValid = email.endsWith(".com")
+    const paymentStatus = ispaid.valueOf()
+
+    console.log("Name:", upperName);
+    console.log("Email ends with .com:", isEmailValid);
+    console.log("Payment status:", paymentStatus);
+    return;
+
+}
+
+
+
+addTwo(5);
+getUpper("bhuvan")
+signUpUser("Bhuvan", "bhuvan@gmail.com", true)
+
+export { }
