@@ -77,9 +77,65 @@ function createUser(user:User): User{
     return{name:"", email:"", isActive:true}
 
 }
-
 createUser({name:"", email:"", isActive:true})
 
 
+export{}
+
+
+
+
+//READONLY and optional
+
+type User1 = {
+    readonly _id:string    //readonly viewer can manuplate
+    name:string
+    email:string
+    isActive:boolean
+    creditcardDetails? : number  // optional  "  ?  "
+}
+
+let myUser1:User1 ={
+    _id:"12345",
+    name:"utshav",
+    email:"uts@gmail",
+    isActive:false
+}
+myUser1.email = "h@gamil"
+// myUser1._id="asas" // read underline cause read only
+
+type cardNumber ={
+    cardNum:string;
+
+}
+
+type cardDate = {
+    cardDate:string
+}
+type carDetails = cardNumber & cardDate & {
+    cvv : number
+}
+======================================================================================================================================================================================
+Array
+
+
+const superHeros: string[] = []
+// const heroPower: number[] = []
+const heroPower: Array<number> = []
+
+type User = {
+    name:string
+    isActive:boolean
+}
+const allUsers: User[] = []
+const MLModels: number[][]=[
+    [255,255,255],
+    []
+]
+
+superHeros.push("spiderman")
+heroPower.push(233);
+
+allUsers.push({name:"utshav", isActive:true })
 
 export{}
