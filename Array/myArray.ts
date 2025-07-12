@@ -7,8 +7,14 @@ type User = {
     isActive:boolean
 }
 const allUsers: User[] = []
+const MLModels: number[][]=[
+    [255,255,255],
+    []
+]
 
 superHeros.push("spiderman")
 heroPower.push(233);
 
 allUsers.push({name:"utshav", isActive:true })
+
+export{}

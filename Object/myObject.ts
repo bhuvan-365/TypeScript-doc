@@ -63,5 +63,17 @@ let myUser1:User1 ={
 myUser1.email = "h@gamil"
 // myUser1._id="asas" // read underline cause read only
 
+type cardNumber ={
+    cardNum:string;
+
+}
+
+type cardDate = {
+    cardDate:string
+}
+type carDetails = cardNumber & cardDate & {
+    cvv : number
+}
+
 
 export{}
