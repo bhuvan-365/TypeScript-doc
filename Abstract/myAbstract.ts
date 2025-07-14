@@ -1,3 +1,4 @@
+
 abstract class TakePhoto {
     constructor(
         public cameraMode: string,
