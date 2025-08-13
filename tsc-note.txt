@@ -10,7 +10,7 @@ syntax:
 let variableName:type = value
 
 
-
+============================================================================================================================================================
 function in TypeScript:
 
 
@@ -139,3 +139,380 @@ heroPower.push(233);
 allUsers.push({name:"utshav", isActive:true })
 
 export{}
+
+
+======================================================================================================================================================================================
+
+Union in TypeScript
+
+let score: number | string = 56;
+
+score = 44;
+score = "45";
+
+
+type User = {
+    name: string;
+    id: number;
+}
+
+type Admin = {
+    username: string;
+    id: number;
+}
+
+let utshav: User | Admin = { name: "utshav", id: 3334 }
+
+utshav = { username: "hc", id: 334 }
+
+// function getDbId (id:number | string ){
+
+//     console.log(`Db id is : ${id}`)
+// }
+getDbId(34)
+getDbId("no")
+
+function getDbId(id: number | string) {
+
+    if (typeof id === "string") {
+        id.toLowerCase()
+    }
+
+}
+
+const data1 : number[]=[1,2,3]
+const data2 : string[]=["1","2","3"]
+const data3 : number[] | string[] = [1,2,3]
+const data4 : (number | string | boolean )[] = [1,2,3]
+
+export{}
+
+==================================================================================================================================================
+Tuples
+
+// const User: (string | number)[] = [1, "bb"]
+let tUser: [string,number,boolean]
+
+tUser=["bb" ,131,true]  // no reverse { order of array matters}
+
+let rgp:[number,number,number] = [255,123,234]
+
+type User = [number,string]
+
+
+
+const newUser: User =[112,"example@g.com"]
+
+newUser[1]= "hc.com"
+// newUser.push(true) *
+
+
+export{}
+
+========================================================================================================================================================
+Enums
+
+ const enum SeatChoice{
+    AISLE = "aisle",
+    MIDDLE = "middle",
+    WINDOW = "window"
+}
+
+const hcSeacrt = SeatChoice.AISLE
+
+export{}
+========================================================================================================================================================
+Interface
+interface User {
+    readonly dbId: number;
+    email: string;
+    userId: number;
+    googleId?: string,
+    // startTrail: ()=> string
+    startTrail(): string,
+    getCoupon(couponname: string, off: number): number
+}
+const bhuvan: User = {
+    dbId: 777,
+    email: "utshv@gmail.com",
+    userId: 2213,
+    startTrail: () => {
+        return "trail started"
+    },
+    getCoupon: (name: "Bhuvan", off: 10) => {
+        return 10
+    }
+}
+bhuvan.email = "h@h.com"
+// bhuvan.dbId = 45678;
+export{}
+
+========================================================================================================================================================
+Extends in TypeScript
+
+interface User {
+    readonly dbId: number;
+    email: string;
+    userId: number;
+    googleId?: string,
+    // startTrail: ()=> string
+    startTrail(): string,
+    getCoupon(couponname: string, off: number): number
+}
+interface User {
+    githubTokens: string
+}
+interface Adim extends User {
+    role: "admin" | "ta" | "learner"
+}
+
+
+const bhuvan: Adim = {
+    dbId: 777,
+    role: "admin",
+    email: "utshv@gmail.com",
+    userId: 2213,
+    startTrail: () => {
+        return "trail started"
+    },
+    getCoupon: (name: "Bhuvan", off: 10) => {
+        return 10
+    },
+    githubTokens: "bhuvan/github"
+}
+bhuvan.email = "h@h.com"
+// bhuvan.dbId = 45678;
+export { }
+
+========================================================================================================================================================
+CLASSes
+
+
+// WRONG WAY
+class User {
+     constructor(email:string,name:string){
+        this.email:string = email;
+         this.name:string  = name
+     }
+ }
+
+
+// CORRECT WAY
+
+class User {
+    email:string;
+    name: string;
+    city:string = "" //no need to worry for call it or not 
+    
+    constructor(email:string,name:string){
+        this.email = email;
+        this.name = name;
+    }
+}
+
+const Bhuvan = new User("bhuvan@.com","bhuvan")// because of constructor(email:string,name:string)
+Bhuvan.city="harion-8 "
+
+========================================================================================================================================================
+ PUBLIC AND PRIVATE 
+
+ class User {
+    public email: string;
+    name: string;
+    class: string = "" //no need to worry for call it or not 
+    private readonly city: string = " Kathmandu"
+
+    constructor(email: string, name: string) {
+        this.email = email;
+        this.name = name;
+    }
+}
+
+const Bhuvan = new User("bhuvan@.com", "bhuvan")// because of constructor(email:string,name:string)
+// Bhuvan.city = "harion-8 " // error because it s private only acceble with in class
+
+export{}
+
+========================================================================================================================================================
+Getters and Setters
+
+class User2 {
+
+    private _courseCount = 1
+
+    readonly city: string = "kayhmandu"
+    constructor(
+
+        public email: string,
+        public name: string,
+    ) {
+
+    }
+
+//getter and setter
+
+
+    get getAppleEmail(): string {
+        return `apple ${this.email}`
+    }
+    get courseCount(): number {
+        return this._courseCount
+    }
+
+    set courseCount(courseNum) { // :number,:string,:boolean not allowed no return type
+        if (courseNum <= 1) {
+            throw new Error("Course count should be more than 1")
+        }
+        this._courseCount = courseNum
+
+    }
+}
+
+
+export { }
+========================================================================================================================================================
+ protected 
+ class User2 {
+
+    // private _courseCount = 1
+    protected _courseCount = 1
+
+    readonly city: string = "kayhmandu"
+    constructor(
+        public email: string,
+        public name: string,
+    ) {}
+
+    //getter and setter
+
+    get getAppleEmail(): string {
+        return `apple ${this.email}`
+    }
+    get courseCount(): number {
+        return this._courseCount
+    }
+
+    set courseCount(courseNum) { // :number,:string,:boolean not allowed no return type
+        if (courseNum <= 1) {
+            throw new Error("Course count should be more than 1")
+        }
+        this._courseCount = courseNum
+
+    }
+
+}
+     class SubUser extends User2 {
+          isFamily: boolean = true
+           changeCourseCount() {
+               this._courseCount = 4
+    }
+
+}
+
+export {}
+
+========================================================================================================================================================
+
+Interface part -2
+
+
+interface TakePhoto {
+    cameraMode: string,
+    filter: string,
+    brust: number,
+
+}
+interface Story {
+    createStory(): void
+}
+
+class Instagram implements TakePhoto {
+    constructor(
+        public cameraMode: string,
+        public filter: string,
+        public brust: number,
+    ) { }
+
+}
+class Youtube implements TakePhoto, Story {
+    constructor(
+
+        public cameraMode: string,
+        public filter: string,
+        public brust: number,
+        public shorts: string // you can add more but not less than TakePhoto 
+
+    ) { }
+    createStory(): void {
+        console.log("Story is created")
+    }
+
+}
+========================================================================================================================================================
+Abstract 
+
+abstract class TakePhoto {
+    constructor(
+        public cameraMode: string,
+        public filter: string
+    ) { }
+
+    abstract getSepia(): void
+    getReelTime(): number{
+        return 8
+    }
+}
+// const bhuvan = new TakePhoto("test","test") // Not allowed 
+
+class Instagram extends TakePhoto {
+
+    constructor(
+        public cameraMode: string,
+        public filter: string,
+        public brust : number
+    ) { 
+        super(cameraMode, filter)
+    }
+    getSepia(): void {
+        console.log("sepia")
+    }
+
+}
+const bhuvan = new Instagram("test", "Test",3)
+
+========================================================================================================================================================
+Generics 
+
+import { NamedTupleMember } from "typescript"
+
+const  score : Array<number> = []
+const names : Array<string> =[]
+
+function identityOne(val:boolean | number): boolean | number { //either num or boolean
+return val
+}
+
+function identityTwo (val:any):any{ // anything
+    return val
+}
+
+function identityThree <Type>(val:Type):Type{ // almost like any  , once you type any value the value type is locked 
+    
+    return val
+}
+// identityThree("name")
+// identityThree(true)
+
+function identityFour<T>(val:T):T{
+    return val
+}
+
+interface Bootle {
+    brand:string
+    type: number
+}
+
+identityFour<Bootle>({})
+
+export{}
+
