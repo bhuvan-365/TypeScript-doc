@@ -515,4 +515,33 @@ interface Bootle {
 identityFour<Bootle>({})
 
 export{}
+================================================================================================================================
+inOperator Nrrowing
+in operator narrowing: Checks if a property exists in an object, helping TypeScript narrow the type.
+Example: if ("prop" in obj) { /* obj has prop */ }
 
+
+=============================================================================================
+instanceof
+
+instanceof narrowing: Checks if an object is an instance of a class, narrowing its type.
+Example: if (obj instanceof MyClass) { /* obj is MyClass */ }
+
+=========================================================================================================================================
+Type predicates: Custom functions that tell TypeScript the type of a variable.
+Example:
+function isString(x: any): x is string { return typeof x === "string"; }
+if (isString(val)) { /* val is string */ }
+
+
+===============================================================================================================================================================
+
+ Discriminated Union And Exhaustiveness Checking with Never 
+
+ 
+ Discriminated unions allow you to define a type (Shape) that can be one of several interfaces, each with a unique kind property. This makes it easy to safely handle different shapes in functions by checking the kind property, ensuring type safety and clear logic for each case.
+
+ Example:
+
+ You can pass a Circle, Square, or Rectangle to getArea or getTureShape, and the function will correctly calculate the area based on the shape type.
+ This pattern is usef
